@@ -1,0 +1,8 @@
+.vite
+dist/
+node_modules
+*.code-workspace
+yarn.lock
+.env
+.env.*
+.ignore

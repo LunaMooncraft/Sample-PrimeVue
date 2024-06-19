@@ -1,0 +1,84 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "plugin:vue/vue3-strongly-recommended",
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "Cesium": "readonly",
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "requireConfigFile": false
+  },
+  "plugins": ["vue", "@stylistic", "@typescript-eslint"],
+  "rules": {
+    // stylistic rules
+    "@stylistic/array-bracket-newline": ["error", "consistent"],
+    "@stylistic/array-bracket-spacing": ["error", "never"],
+    "@stylistic/array-element-newline": ["error", "consistent"],
+    "@stylistic/indent": ["error", 2, { "ArrayExpression": "first", "ObjectExpression": "first", "SwitchCase": 1 }],
+    "@stylistic/max-len": ["error", 170, 2, { "ignoreUrls": true, "ignoreComments": false, "ignoreRegExpLiterals": true, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
+    "@stylistic/object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+    "@stylistic/object-curly-spacing": ["error", "always"],
+    "@stylistic/operator-linebreak": ["error", "after"],
+    "@stylistic/quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    // typescript rules
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
+    // general JS rules
+    "class-methods-use-this": "off",
+    "comma-dangle": ["error", "never"],
+    "import/extensions": ["error", "always", { "js": "never", "ts": "never" }],
+    "no-console": ["error", { "allow": ["error", "warn", "info", "table"] }],
+    "no-debugger": "error",
+    "no-param-reassign": ["error", { "props": false }],
+    // vue rules
+    "vue/component-definition-name-casing": "off",
+    "vue/max-attributes-per-line": ["warn", { "singleline": { "max": 8 }, "multiline": { "max": 1 } }],
+    "vue/multi-word-component-names": "off",
+    "vue/no-reserved-component-names": "off",
+    "vue/no-v-html": "off"
+  },
+  "overrides": [{
+    "files": ["*.vue"],
+    "rules": {}
+  }, {
+    "files": ["*.ts"],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-shadow": "warn",
+      "import/extensions": ["error", "always", { "js": "never", "ts": "never" }],
+      "max-classes-per-file": ["error", 5],
+      "no-shadow": "off",
+      "no-underscore-dangle": "off"
+    }
+  }],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@", "./src"],
+          ["components", "./src/components"],
+          ["modules", "./src/modules"]
+        ],
+        "extensions": [".js", ".ts", ".vue"]
+      },
+      "node": {
+        "extensions": [".js", ".ts", ".vue"]
+      }
+    }
+  }
+}
